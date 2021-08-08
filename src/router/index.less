@@ -1,0 +1,38 @@
+.widgets-layout {
+  min-height: 100vh;
+
+  &-header {
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+  }
+  &-logo {
+    float: left;
+    width: 200px;
+    height: 64px;
+    line-height: 64px;
+    color: #fff;
+    font-size: 24px;
+
+    a {
+      color: #f5f5f7;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-content {
+    padding: 30px;
+    background: #fff;
+    margin-top: 64px;
+  }
+
+  &-footer {
+    text-align: center;
+    position: relative;
+  }
+}

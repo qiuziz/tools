@@ -1,0 +1,40 @@
+.home-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  .widget-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    .widget-wrap {
+      cursor: pointer;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 5px;
+      border: 1px solid #ddd;
+
+      &:hover {
+        border: 1px solid #999;
+        box-shadow: 0 0 20px #999 inset;
+      }
+
+      .logo {
+        height: 100px;
+        width: 100px;
+        object-fit: contain;
+      }
+      .title {
+        margin-top: 20px;
+        font-weight: 500;
+        font-size: 20px;
+      }
+    }
+  }
+}

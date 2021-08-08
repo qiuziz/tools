@@ -1,0 +1,59 @@
+.qrcode-content {
+  flex: 1;
+  .opt-box {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .btn {
+      margin-right: 10px;
+    }
+  }
+
+  .table-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: red;
+      margin-left: 10px;
+    }
+  }
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .input {
+      height: 100%;
+      resize: none;
+    }
+
+
+  }
+}
+
+.btn {
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+  &.more {
+    border-radius: 100px;
+  }
+  &.no-mb {
+    margin-bottom: 0;
+  }
+}
+
+.qrcode-result {
+  .ant-tooltip-inner {
+    padding: 15px;
+    background: #fff !important;
+    color: #333333 !important;
+  }
+}
