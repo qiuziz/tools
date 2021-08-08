@@ -57,7 +57,7 @@ export default function Qrcode() {
    */
   const getDataFromIndexedDB = () => {
     openDB({
-      dbName: 'widgets_qrcode',
+      dbName: 'tools_qrcode',
       storeName: ['url_table', 'part_table'],
       storeOption: { keyPath: 'key' }
     }).then((db: IDBDatabase) => {

@@ -1,6 +1,6 @@
 {
-  "short_name": "Widgets",
-  "name": "widgets",
+  "short_name": "tools",
+  "name": "tools",
   "icons": [
     {
       "src": "favicon.ico",

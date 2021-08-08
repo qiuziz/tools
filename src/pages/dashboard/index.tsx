@@ -30,11 +30,11 @@ export default function Dashboard() {
   return (
     <ViewportProvider>
       <BrowserRouter>
-        <Layout className="widgets-layout">
+        <Layout className="tools-layout">
           {!getGlobalData('PREFIX') && (
-            <Header className="widgets-layout-header">
-              <div className="widgets-layout-logo">
-                <a href="/">Widgets</a>
+            <Header className="tools-layout-header">
+              <div className="tools-layout-logo">
+                <a href="/">tools</a>
               </div>
               <HeaderBar />
             </Header>
@@ -43,12 +43,12 @@ export default function Dashboard() {
             style={{
               marginTop: !getGlobalData('PREFIX') ? '64px' : 0
             }}
-            className="widgets-layout-content"
+            className="tools-layout-content"
           >
             <BasicRoute />
           </Content>
           {!getGlobalData('PREFIX') && (
-            <Footer className="widgets-layout-footer">Widgets ©2021 Created by qiuz</Footer>
+            <Footer className="tools-layout-footer">tools ©2021 Created by qiuz</Footer>
           )}
         </Layout>
       </BrowserRouter>

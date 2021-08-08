@@ -52,7 +52,7 @@ export default function CDNImgUpload() {
 
   useEffect(() => {
     openDB({
-      dbName: 'widgets_cdn_img_config',
+      dbName: 'tools_cdn_img_config',
       storeName: ['upload_commit'],
       storeOption: { keyPath: 'key', autoIncrement: true }
     }).then((db: IDBDatabase) => {

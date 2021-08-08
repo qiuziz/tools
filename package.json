@@ -1,11 +1,10 @@
 {
-  "name": "widgets",
-  "cluster-name": "hbg_web_hbgwidgetspc",
+  "name": "tools",
   "version": "1.0.7",
   "private": true,
-  "homepage": "http://blog.qiuz.site/widgets/",
+  "homepage": "http://blog.qiuz.site/tools/",
   "bugs": {
-    "url": "https://github.com/qiuziz/widget/issues"
+    "url": "https://github.com/qiuziz/tools/issues"
   },
   "scripts": {
     "start": "node scripts/start.js",
