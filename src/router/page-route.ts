@@ -12,7 +12,7 @@ export const PAGE_ROUTE = [
     id: 1,
     key: 1,
     title: 'URL编码',
-    logo: 'https://gitee.com/qiuz/img/raw/master/20210802104823.png',
+    logo: 'https://gitee.com/qiuz/img/raw/master/20220225225717.png',
     component: lazy(() => import('pages/qrcode')),
     url: '/qrcode/'
   },
@@ -20,7 +20,7 @@ export const PAGE_ROUTE = [
     id: 2,
     key: 2,
     title: 'CDN上传',
-    logo: 'https://gitee.com/qiuz/img/raw/master/20210802104850.png',
+    logo: 'https://gitee.com/qiuz/img/raw/master/20220225230043.png',
     component: lazy(() => import('pages/cdn-upload')),
     url: '/cdn-img-upload/'
   },

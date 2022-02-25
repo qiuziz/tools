@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "title": "图片压缩",
+      "siteUrl": "https://tinify.cn/"
+    },
+    {
+      "id": "2",
+      "title": "IP查询",
+      "siteUrl": "https://www.ip138.com/"
+    }
+  ]
+}
