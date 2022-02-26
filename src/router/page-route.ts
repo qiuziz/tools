@@ -45,7 +45,8 @@ export const PAGE_ROUTE = [
   {
     id: 6,
     key: 6,
-    title: '在线工具集合',
+    title: '工具集',
+    logo: 'https://gitee.com/qiuz/img/raw/master/tool.png',
     component: lazy(() => import('pages/site-map')),
     url: '/site-map'
   },

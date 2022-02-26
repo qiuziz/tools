@@ -27,6 +27,15 @@ export default function SiteMap() {
         );
       })}
 
+      <a
+        className="edit-btn"
+        target="_blank"
+        href="https://github.com/qiuziz/tools/edit/master/src/pages/site-map/constant.ts"
+      >
+        <img src="https://gitee.com/qiuz/img/raw/master/20220227001321.png" alt="新增" />
+        新增
+      </a>
+
       {/* <iframe id="site-frame" src={site} onLoad={onIframeError} /> */}
     </div>
   );
