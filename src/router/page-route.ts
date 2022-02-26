@@ -42,4 +42,11 @@ export const PAGE_ROUTE = [
     component: lazy(() => import('pages/document')),
     url: '/document/'
   },
+  {
+    id: 6,
+    key: 6,
+    title: '在线工具集合',
+    component: lazy(() => import('pages/site-map')),
+    url: '/site-map'
+  },
 ];

@@ -1,65 +1,143 @@
-import Axios, { AxiosRequestConfig } from 'axios';
+/*
+ * @Author: qiuz
+ * @Github: <https://github.com/qiuziz>
+ * @Date: 2018-11-02 14:38:52
+ * @Last Modified by: qiuz
+ * @Last Modified time: 2022-02-26 18:00:42
+ */
+
+import 'whatwg-fetch';
+import { filterObjectEmptyValue } from 'utils';
 import { message as antdMsg } from 'antd';
-import { isObject } from 'utils';
 
-const successCode = ['200', 200, 0, '0', 'ok', 'true'];
+const successCode = [0];
+const exitFn = () => {
+  // const redirectTo = window.location.href;
+  // jump(`/admin/login?redirectTo=${encodeURIComponent(redirectTo)}`, { redirect: true });
+};
+interface ConfigType {
+  loadingDelay?: number;
+  des?: boolean;
+  [propName: string]: any;
+}
 
-
-type HttpConfig = AxiosRequestConfig & {
-  dataKey: string;
+const HEADER: any = {
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8'
+  }
 };
 
-// 创建axios实例
-const instance = Axios.create({ timeout: 600000, dataKey: 'data' } as HttpConfig);
-
-/**
- * 请求拦截器
- * 每次请求前，如果存在token则在请求头中携带token
- */
-
-instance.interceptors.request.use(
-  (config) => {
-    config.withCredentials = true;
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
-/**
- * 响应拦截器
- * 拦截响应并统一处理
- */
-instance.interceptors.response.use(
-  (res) => {
-    if (res.status && res.status === 200) {
-      const { data, config = {}, status } = res;
-      console.log(res);
-      // 兼容data为string
-      if (!isObject(data)) return Promise.resolve(data);
-      const { dataKey = 'data' } = config as HttpConfig;
-      if (successCode.indexOf(status) > -1 || successCode.indexOf(data.code) > -1) {
-        console.log(data[dataKey]);
-        return Promise.resolve(data[dataKey] || {});
+const fetchMethod = (_url: string, _config: any = {}) => {
+  return fetch(_url, { ...HEADER, ..._config })
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
       }
-      antdMsg.error(data.msg || '系统异常');
-    }
-    return Promise.reject(res);
-  },
-  (error) => {
-    const { response } = error;
-    if (response) {
-      antdMsg.error(response.statusText || '未知异常');
-      return Promise.reject(response);
-    } else {
-      // 断网情况处理
-      if (!window.navigator.onLine) {
-        // 通知断网
-        antdMsg.error('网络异常');
-      } else {
-        return Promise.reject(error);
+      return response.json().then(undefined, () => Promise.resolve(''));
+    })
+    .then((res: any) => {
+      const { config = {}, code, msg } = res;
+      const { dataKey = 'data' } = config;
+      const { directReturn = false } = _config;
+      if (directReturn) {
+        return Promise.resolve(res);
       }
-    }
+      if (code === 401) {
+        exitFn();
+        return Promise.reject(res);
+      }
+      if (successCode.indexOf(code) > -1) {
+        return Promise.resolve(res[dataKey] || {});
+      }
+      antdMsg.error(msg || '系统异常');
+      return Promise.reject(res);
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
+const matchUrlSearchParams = (url: string, urlSearchParams: any) => {
+  if (!urlSearchParams) {
+    return url.replace(/\/:[^?]+/g, '');
   }
-);
+  const u = new URLSearchParams();
+  // tslint:disable-next-line:variable-name
+  let _url = Object.keys(urlSearchParams).reduce((pre, next) => {
+    if (pre.includes(':' + next)) {
+      return pre.replace(':' + next, urlSearchParams[next]);
+    } else {
+      if (urlSearchParams[next] && urlSearchParams[next].constructor === Array) {
+        urlSearchParams[next].forEach((value: any) => {
+          u.append(next, value);
+        });
+      } else {
+        u.append(next, urlSearchParams[next]);
+      }
+      return pre;
+    }
+  }, url);
+  // let u = toQueryString(urlSearchParams);
+  _url = _url.replace(/\/:[^?]+/g, '');
+  return _url + (u.toString() === '' ? '' : '?' + u);
+};
 
-export default instance;
+class FetchApi {
+  url = '';
+
+  constructor(_url: string) {
+    this.url = _url;
+  }
+
+  get = (urlSearchParams: object, bodyParams?: object, config?: ConfigType) => {
+    return fetchMethod(
+      matchUrlSearchParams(this.url, { ...urlSearchParams, ...bodyParams }),
+      config
+    );
+  };
+
+  post = (urlSearchParams?: object, bodyParams?: any, config?: ConfigType) => {
+    return fetchMethod(matchUrlSearchParams(this.url, urlSearchParams), {
+      ...config,
+      method: 'POST',
+      body: JSON.stringify(filterObjectEmptyValue(bodyParams))
+    });
+  };
+
+  upload = (urlSearchParams: object, bodyParams: FormData) => {
+    return fetchMethod(matchUrlSearchParams(this.url, urlSearchParams), {
+      method: 'POST',
+      isUpoad: true,
+      body: bodyParams
+    });
+  };
+
+  delete = (urlSearchParams: object, config?: ConfigType) => {
+    return fetchMethod(matchUrlSearchParams(this.url, urlSearchParams), {
+      ...config,
+      method: 'DELETE'
+    });
+  };
+
+  put = (urlSearchParams: object, bodyParams: object, config?: ConfigType) => {
+    return fetchMethod(matchUrlSearchParams(this.url, urlSearchParams), {
+      ...config,
+      method: 'PUT',
+      body: JSON.stringify(filterObjectEmptyValue(bodyParams))
+    });
+  };
+
+  patch = (urlSearchParams: object, bodyParams: object, config?: ConfigType) => {
+    return fetchMethod(matchUrlSearchParams(this.url, urlSearchParams), {
+      ...config,
+      method: 'PATCH',
+      body: JSON.stringify(filterObjectEmptyValue(bodyParams))
+    });
+  };
+}
+
+const Http = (url: string) => {
+  return new FetchApi(url);
+};
+
+export default Http;

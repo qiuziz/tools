@@ -54,3 +54,12 @@ export const setupScript = (src: string, crossorigin = ''): Promise<void> => {
     document.body.appendChild(script);
   });
 };
+
+export const filterObjectEmptyValue = (data: object | undefined) => {
+  if (!data) return {};
+  const result = {};
+  Object.keys(data).forEach((key: string) => {
+    data[key] !== null && data[key] !== undefined && (result[key] = data[key]);
+  });
+  return result;
+};
