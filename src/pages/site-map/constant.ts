@@ -21,5 +21,9 @@ export const LIST = [
   {
     title: '在线加解密-base64',
     url: 'https://tool.chinaz.com/tools/base64.aspx'
+  },
+  {
+    title: '正则测试',
+    url: 'https://tool.oschina.net/regex/'
   }
 ];
