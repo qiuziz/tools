@@ -19,6 +19,7 @@ export const PAGE_ROUTE = [
   {
     id: 2,
     key: 2,
+    invisible: true,
     title: 'CDN上传',
     logo: 'https://gitee.com/qiuz/img/raw/master/20220225230043.png',
     component: lazy(() => import('pages/cdn-upload')),
