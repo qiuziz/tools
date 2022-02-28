@@ -101,5 +101,9 @@ export const LIST = [
   {
     title: 'Chrome inspect',
     url: 'chrome://inspect/#devices'
+  },
+  {
+    title: '在线css转less/sass/stylus',
+    url: 'http://tools.jb51.net/code/css2less'
   }
 ];
