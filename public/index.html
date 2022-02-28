@@ -38,26 +38,6 @@
         }
       })();
     </script>
-       <script type="text/javascript">
-        function CallCrossDomainJSONPServer(url) {
-            var oldScript = document.getElementById(url); // 如果页面中注册了调用的服务器，则重新调用
-            if (oldScript) {
-                oldScript.setAttribute("src", url);
-                return;
-            }
-            var newScript = document.createElement("script");// 如果未注册该服务器，则注册并请求之
-            newScript.setAttribute("type", "application/json");
-            newScript.setAttribute("src", url + "?JSONP=OnJSONPServerResponse");
-            newScript.setAttribute("id", url);
-            document.head.appendChild(newScript);
-            //注意，此处也可以写成document.body.appendChild，但是不能写成document.appendChild
-            //因为脚本只能位于head部分或者body部分
-        }
-        function OnJSONPServerResponse(result) {
-            alert(result);
-            console.log(result);
-        }
-    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
