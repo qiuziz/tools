@@ -101,9 +101,5 @@ export const LIST = [
   {
     title: 'Chrome inspect',
     url: 'chrome://inspect/#devices'
-  },
-  {
-    title: '字体生成转换',
-    url: 'https://transfonter.org/'
   }
 ];

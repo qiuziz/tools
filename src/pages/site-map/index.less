@@ -8,16 +8,15 @@
       display: inline-flex;
       align-items: center;
       flex-direction: column;
-      // justify-content: space-around;
-      font-family: arial, sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       padding: 5px 12px;
       transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
       text-align: center;
-      width: 180px;
-      height: 180px;
-      margin: 1px;
-      border: 1px solid #ddd;
+      width: 150px;
+      height: 150px;
+      margin: 0;
+      margin-bottom: -1px;
+      margin-right: -1px;
       float: left;
       background: linear-gradient(
         to top,
@@ -28,14 +27,12 @@
         rgb(191, 191, 191)
       );
       border: 1px solid black;
-      box-shadow: rgb(0 0 0 / 75%) 0px 1px 5px;
       border-radius: 0px;
+      font-style: italic;
 
       &:hover {
-        border: 1px solid #999;
         box-shadow: 0 0 20px #999 inset;
       }
-      font-style: italic;
 
       .title {
         text-overflow: ellipsis;

@@ -63,3 +63,20 @@ export const filterObjectEmptyValue = (data: object | undefined) => {
   });
   return result;
 };
+
+/**
+ * @description 数组切割分组
+ * @param array
+ * @param subGroupLength
+ */
+ export const arrayGroup = (array: any[], subGroupLength: number, fillItem?: any): any[] => {
+  const reslut = [];
+  for (let i = 0, len = array.length; i < len; i += subGroupLength) {
+    const group = array.slice(i, i + subGroupLength);
+    if (fillItem && group.length < subGroupLength) {
+      group.push(...new Array(subGroupLength - group.length).fill(fillItem));
+    }
+    reslut.push(group);
+  }
+  return reslut;
+};
