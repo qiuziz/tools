@@ -22,7 +22,10 @@ export default function SiteMap() {
       {LIST.map((site: any) => {
         return (
           <div className="site-map-list-btn" key={site.url} onClick={go(site.url)}>
-            {site.title}
+            <p className="title">{site.title}</p>
+            <a href={site.url} target="_blank">
+              {site.url}
+            </a>
           </div>
         );
       })}

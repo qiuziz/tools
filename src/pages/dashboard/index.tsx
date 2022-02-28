@@ -41,7 +41,8 @@ export default function Dashboard() {
           )}
           <Content
             style={{
-              marginTop: !getGlobalData('PREFIX') ? '64px' : 0
+              marginTop: !getGlobalData('PREFIX') ? '64px' : 0,
+              marginBottom: !getGlobalData('PREFIX') ? '70px' : 0,
             }}
             className="tools-layout-content"
           >

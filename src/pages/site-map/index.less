@@ -1,36 +1,57 @@
 .site-map {
   display: block;
   width: 100%;
+  margin: 0 auto;
 
   &-list {
     &-btn {
       display: inline-flex;
-      margin-right: 10px;
-      margin-bottom: 20px;
-      background: #1d89ff;
-      background-image: linear-gradient(180deg, #00bbd4 0, #3f51b5);
-      color: #fff;
+      align-items: center;
+      flex-direction: column;
+      // justify-content: space-around;
       font-family: arial, sans-serif;
       font-size: 16px;
       padding: 5px 12px;
-      border-radius: 100px;
-      box-shadow: 0 1px 2px rgb(0 0 0 / 25%);
-      text-shadow: 0 1px 0 hsl(0deg 0% 100% / 25%);
-      border-color: transparent;
-      font-weight: 400;
-      cursor: pointer;
-      position: relative;
-      padding: 5px 12px;
-      overflow: hidden;
-      border-width: 0;
       transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
       text-align: center;
-      height: 35px;
-      align-items: center;
-      justify-content: center;
+      width: 180px;
+      height: 180px;
+      margin: 1px;
+      border: 1px solid #ddd;
+      float: left;
+      background: linear-gradient(
+        to top,
+        rgb(252, 252, 252),
+        rgb(247, 247, 247) 3%,
+        rgb(242, 242, 242) 12%,
+        rgb(217, 217, 217) 90%,
+        rgb(191, 191, 191)
+      );
+      border: 1px solid black;
+      box-shadow: rgb(0 0 0 / 75%) 0px 1px 5px;
+      border-radius: 0px;
 
       &:hover {
-        opacity: 0.75;
+        border: 1px solid #999;
+        box-shadow: 0 0 20px #999 inset;
+      }
+      font-style: italic;
+
+      .title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-top: 30%;
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      a {
+        color: #0196e3;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 10px;
+        width: 100%;
       }
     }
   }
