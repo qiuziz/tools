@@ -14,7 +14,7 @@ export const PAGE_ROUTE = [
     title: 'URL编码',
     logo: 'https://gitee.com/qiuz/img/raw/master/20220225225717.png',
     component: lazy(() => import('pages/qrcode')),
-    url: '/qrcode/'
+    url: '/tools/qrcode'
   },
   {
     id: 2,
@@ -49,6 +49,6 @@ export const PAGE_ROUTE = [
     title: '工具集',
     logo: 'https://gitee.com/qiuz/img/raw/master/tool.png',
     component: lazy(() => import('pages/site-map')),
-    url: '/site-map'
+    url: '/tools/site-map'
   },
 ];
