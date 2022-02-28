@@ -25,5 +25,9 @@ export const LIST = [
   {
     title: '正则测试',
     url: 'https://tool.oschina.net/regex/'
+  },
+  {
+    title: 'PDF转换器',
+    url: 'https://www.pdf2go.com/zh'
   }
 ];
