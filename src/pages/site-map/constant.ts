@@ -105,5 +105,9 @@ export const LIST = [
   {
     title: '在线css转less/sass/stylus',
     url: 'http://tools.jb51.net/code/css2less'
+  },
+  {
+    title: '文本比较',
+    url: 'https://text-compare.com/zh-hans/'
   }
 ];
